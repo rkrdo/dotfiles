@@ -58,7 +58,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Load everything under the .zshrc.d folder
 
-for file in "$HOME"/dotfiles/shell/.zshrc.d/*; do
+for file in "$HOME"/.zshrc.d/*; do
   # shellcheck source=/dev/null
   source "$file"
 done
