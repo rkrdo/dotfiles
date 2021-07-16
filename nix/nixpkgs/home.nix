@@ -18,4 +18,25 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.11";
+
+  # https://search.nixos.org/packages
+  home.packages = with pkgs; [
+    bat
+    ctop
+    fzf
+    gh
+    git
+    gnupg
+    htop
+    jq
+    nnn
+    ripgrep
+    rnix-lsp
+    stow
+    tig
+    tmux
+    tree
+    vim
+    wget
+  ];
 }
