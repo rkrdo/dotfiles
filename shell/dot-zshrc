@@ -1,3 +1,4 @@
+# vi: ft=zsh
 # Load everything under the .zshrc.d folder
 
 for file in "$HOME"/.zshrc.d/*; do
