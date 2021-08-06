@@ -62,6 +62,15 @@
       VIMDATA = "~/.vim"; # TODO - check if needed
       NNN_USE_EDITOR = "1";
     };
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "kolo";
+      plugins = ["asdf" "docker" "docker-compose" "git" "tig"];
+      extraConfig = ''
+        CASE_SENSITIVE="false"
+      '';
+    };
   };
 
   programs.bat = {
