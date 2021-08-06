@@ -34,7 +34,6 @@
     tig
     tmux
     tree
-    vim
     wget
   ];
 
@@ -59,8 +58,6 @@
     '';
     sessionVariables = {
       EDITOR = "vim";
-      VIMCONFIG = "~/.vim"; # TODO - check if needed
-      VIMDATA = "~/.vim"; # TODO - check if needed
       NNN_USE_EDITOR = "1";
     };
 
@@ -86,5 +83,32 @@
       enableShellIntegration = true;
       shellIntegrationOptions = ["-p"];
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    extraConfig = builtins.readFile ./extraConfig.vim;
+    # nix-env -f '<nixpkgs>' -qaP -A vimPlugins | fzf
+    plugins = with pkgs.vimPlugins; [
+      vim-sensible
+      vim-vinegar
+      vim-commentary
+      vim-endwise
+      vim-fugitive
+      jdaddy-vim
+      vim-rails
+      vim-surround
+      vim-polyglot
+      fzf-vim
+      palenight-vim
+      ale
+      vim-gitgutter
+      indentLine
+      rainbow
+      vim-test
+    ];
+    vimAlias = true;
+    withPython3 = false;
+    withRuby = false;
   };
 }
