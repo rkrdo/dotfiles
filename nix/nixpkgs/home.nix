@@ -111,4 +111,6 @@
     withPython3 = false;
     withRuby = false;
   };
+
+  home.file.".ideavimrc".source = ./ideavim.vim;
 }
