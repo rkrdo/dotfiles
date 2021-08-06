@@ -53,6 +53,7 @@
       }
     '';
     profileExtra = ''
+      if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
       # https://github.com/Homebrew/discussions/discussions/446#discussioncomment-263078
       if [ -e /opt/homebrew/bin/brew ]; then eval $(/opt/homebrew/bin/brew shellenv) ; fi
     '';
@@ -81,5 +82,9 @@
   programs.fzf = {
     enable = true;
     defaultCommand = "rg --files --follow --hidden --no-ignore-vcs";
+    tmux = {
+      enableShellIntegration = true;
+      shellIntegrationOptions = ["-p"];
+    };
   };
 }
