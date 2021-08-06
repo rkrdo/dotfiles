@@ -21,9 +21,7 @@
 
   # https://search.nixos.org/packages
   home.packages = with pkgs; [
-    bat
     ctop
-    fzf
     gh
     git
     gnupg
@@ -39,4 +37,40 @@
     vim
     wget
   ];
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
+    dotDir = ".config/zsh";
+    dirHashes = {
+      dotfiles = "$HOME/.dotfiles";
+    };
+    enableSyntaxHighlighting = true;
+    initExtra = ''
+      fh() {
+        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+      }
+    '';
+    profileExtra = ''
+      # https://github.com/Homebrew/discussions/discussions/446#discussioncomment-263078
+      if [ -e /opt/homebrew/bin/brew ]; then eval $(/opt/homebrew/bin/brew shellenv) ; fi
+    '';
+    sessionVariables = {
+      EDITOR = "vim";
+      VIMCONFIG = "~/.vim"; # TODO - check if needed
+      VIMDATA = "~/.vim"; # TODO - check if needed
+      NNN_USE_EDITOR = "1";
+    };
+  };
+
+  programs.bat = {
+    enable = true;
+    config.theme = "Dracula";
+  };
+
+  programs.fzf = {
+    enable = true;
+    defaultCommand = "rg --files --follow --hidden --no-ignore-vcs";
+  };
 }
