@@ -105,6 +105,7 @@
       indentLine
       rainbow
       vim-test
+      vimux
     ];
     vimAlias = true;
     withPython3 = false;

@@ -89,3 +89,6 @@ let g:indentLine_bufTypeExclude = ['help', 'terminal']
 
 " https://github.com/luochen1990/rainbow#install
 let g:rainbow_active = 1
+
+" https://github.com/vim-test/vim-test#strategies
+let test#strategy = "vimux"
