@@ -32,7 +32,6 @@
     rnix-lsp
     stow
     tig
-    tmux
     tree
     wget
   ];
@@ -113,4 +112,32 @@
   };
 
   home.file.".ideavimrc".source = ./ideavim.vim;
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    sensibleOnTop = true;
+    shortcut = "a";
+    terminal = "screen-256color";
+    plugins = with pkgs.tmuxPlugins; [
+      pain-control
+      logging
+      dracula
+      {
+        plugin = dracula;
+        extraConfig = ''
+          # https://draculatheme.com/tmux
+          set -g @dracula-plugins "battery"
+          set -g @dracula-show-left-icon session
+        '';
+      }
+    ];
+    extraConfig = ''
+      set -ga terminal-overrides ",xterm-256color:Tc"
+      bind T popup -E -h 95% -w 95% -x 100% "htop"
+      bind S popup -d '#{pane_current_path}' -w 95% -h 95% -E 'tig status'
+      # enable mouse support for switching panes/windows
+      set -g mouse on
+    '';
+  };
 }
