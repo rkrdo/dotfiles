@@ -1,7 +1,0 @@
-# vi: ft=zsh
-# Load everything under the .zshrc.d folder
-
-for file in "$HOME"/.zshrc.d/*; do
-  # shellcheck source=/dev/null
-  source "$file"
-done
