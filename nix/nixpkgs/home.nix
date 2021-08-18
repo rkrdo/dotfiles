@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+let
+  homeDir = config.home.homeDirectory;
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -56,7 +58,7 @@
     enableAutosuggestions = true;
     dotDir = ".config/zsh";
     dirHashes = {
-      dotfiles = "$HOME/.dotfiles";
+      dotfiles = "${homeDir}/.dotfiles";
     };
     enableSyntaxHighlighting = true;
     initExtra = ''
@@ -65,7 +67,7 @@
       }
     '';
     profileExtra = ''
-      if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+      if [ -e ${homeDir}/.nix-profile/etc/profile.d/nix.sh ]; then . ${homeDir}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
       # https://github.com/Homebrew/discussions/discussions/446#discussioncomment-263078
       if [ -e /opt/homebrew/bin/brew ]; then eval $(/opt/homebrew/bin/brew shellenv) ; fi
     '';
@@ -206,6 +208,6 @@
       ".env.*"
     ];
 
-    includes = [ { path = "${config.home.homeDirectory}/.local-gitconfig"; } ];
+    includes = [ { path = "${homeDir}/.local-gitconfig"; } ];
   };
 }
