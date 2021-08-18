@@ -23,7 +23,6 @@
   home.packages = with pkgs; [
     ctop
     gh
-    git
     gnupg
     htop
     jq
@@ -35,6 +34,21 @@
     tree
     wget
   ];
+
+  home.file.".ideavimrc".text = ''
+    imap jk <Esc>
+    set ideajoin
+
+    # https://www.dev-log.me/VimtelliJ:_All_the_best_of_Vim_in_IntelliJ/
+    set surround
+    nnoremap <leader>y :action PasteMultiple<CR>
+  '';
+
+  home.file.".asdfrc".text = ''
+    legacy_version_file = yes
+    # https://github.com/halcyon/asdf-java#macos-integration
+    java_macos_integration_enable = yes
+  '';
 
   programs.zsh = {
     enable = true;
@@ -112,10 +126,6 @@
     withRuby = false;
   };
 
-  home.file.".ideavimrc".source = ./ideavim.vim;
-
-  home.file.".asdfrc".source = ./asdfrc;
-
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -142,5 +152,60 @@
       # enable mouse support for switching panes/windows
       set -g mouse on
     '';
+  };
+
+
+  home.file.".local-gitconfig".source = ./gitconfig.local;
+
+  programs.git = {
+    enable = true;
+    aliases = {
+      hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
+    };
+    extraConfig = {
+      user = {
+        name = "Ricardo Cruz";
+      };
+      core = {
+        editor = "vim";
+      };
+      color = {
+        ui = "auto";
+        diff = "auto";
+      };
+      "color \"branch\"" = {
+        current = "yellow reverse";
+        local = "yellow";
+        remote = "green";
+      };
+      "color \"diff\"" =  {
+        meta = "yellow bold";
+        frag = "magenta bold";
+        old = "red bold";
+        new = "green bold";
+      };
+      "color \"status\"" = {
+        added = "yellow";
+        changed = "green";
+        untracked = "cyan";
+      };
+      push.default = "current";
+      web.browser = "open";
+      commit.verbose = "true";
+    };
+
+    ignores = [
+      "tags"
+      "projections.json"
+      ".exrc"
+      ".vimrc"
+      ".DS_STORE"
+      ".vscode"
+      ".idea"
+      ".tool-versions"
+      ".env.*"
+    ];
+
+    includes = [ { path = "${config.home.homeDirectory}/.local-gitconfig"; } ];
   };
 }
