@@ -114,6 +114,8 @@
 
   home.file.".ideavimrc".source = ./ideavim.vim;
 
+  home.file.".asdfrc".source = ./asdfrc;
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
