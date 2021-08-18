@@ -130,12 +130,12 @@
     enable = true;
     baseIndex = 1;
     sensibleOnTop = true;
-    shortcut = "a";
+    prefix = "C-a";
     terminal = "screen-256color";
+    keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
       pain-control
       logging
-      dracula
       {
         plugin = dracula;
         extraConfig = ''
