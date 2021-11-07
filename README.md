@@ -4,10 +4,10 @@ Usage:
 ---
 
 ```bash
-$ curl -L https://nixos.org/nix/install | sh -s -- --darwin-use-unencrypted-nix-store-volume
+$ sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-See https://nixos.org/manual/nix/stable/#sect-macos-installation for more info
+See https://nixos.org/manual/nix/stable/installation/installing-binary.html#installing-a-binary-distribution for more info
 
 Once Nix is installed, follow https://github.com/nix-community/home-manager#installation to install `home-manager`
 
