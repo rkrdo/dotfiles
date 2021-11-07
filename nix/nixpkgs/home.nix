@@ -23,6 +23,7 @@ in {
 
   # https://search.nixos.org/packages
   home.packages = with pkgs; [
+    asdf-vm
     ctop
     gh
     gnupg
@@ -68,6 +69,9 @@ in {
     '';
     profileExtra = ''
       if [ -e ${homeDir}/.nix-profile/etc/profile.d/nix.sh ]; then . ${homeDir}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+      if [ -e ${homeDir}/.nix-profile/etc/profile.d/asdf-prepare.sh ]; then . ${homeDir}/.nix-profile/etc/profile.d/asdf-prepare.sh; fi # init asdf
+
       # https://github.com/Homebrew/discussions/discussions/446#discussioncomment-263078
       if [ -e /opt/homebrew/bin/brew ]; then eval $(/opt/homebrew/bin/brew shellenv) ; fi
     '';
@@ -79,7 +83,7 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "kolo";
-      plugins = ["asdf" "docker" "docker-compose" "git" "tig"];
+      plugins = ["docker" "docker-compose" "git" "tig"];
       extraConfig = ''
         CASE_SENSITIVE="false"
       '';
