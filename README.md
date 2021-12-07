@@ -11,11 +11,12 @@ See https://nixos.org/manual/nix/stable/installation/installing-binary.html#inst
 
 Once Nix is installed, follow https://github.com/nix-community/home-manager#installation to install `home-manager`
 
-### Symlink the home-manager config:
+### Symlink the home-manager/homebrew config:
 ---
 
 https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
 
 ```
 stow nix
+stow brew
 ```
