@@ -14,6 +14,8 @@ Once Nix is installed, follow https://github.com/nix-community/home-manager#inst
 ### Symlink the home-manager config:
 ---
 
+https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
+
 ```
-stow --dotfiles nix --target=$HOME/.config
+stow nix
 ```
