@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   homeDir = config.home.homeDirectory;
+  zsh-powerlevel10k = pkgs.zsh-powerlevel10k;
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -29,6 +30,7 @@ in {
     gnupg
     htop
     jq
+    meslo-lgs-nf
     nnn
     ripgrep
     rnix-lsp
@@ -88,6 +90,19 @@ in {
         CASE_SENSITIVE="false"
       '';
     };
+
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "powerlevel10k-config";
+        src = lib.cleanSource ./p10k-config;
+        file = "p10k.zsh";
+      }
+    ];
   };
 
   programs.bat = {
@@ -214,4 +229,7 @@ in {
 
     includes = [ { path = "${homeDir}/.local-gitconfig"; } ];
   };
+
+  # https://rycee.gitlab.io/home-manager/options.html#opt-fonts.fontconfig.enable
+  fonts.fontconfig.enable = true;
 }
