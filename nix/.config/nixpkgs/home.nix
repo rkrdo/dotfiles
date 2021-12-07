@@ -232,4 +232,11 @@ in {
 
   # https://rycee.gitlab.io/home-manager/options.html#opt-fonts.fontconfig.enable
   fonts.fontconfig.enable = true;
+
+  xdg.configFile."kitty/kitty.conf" = {
+    text = builtins.readFile ./kitty-config/kitty.conf;
+  };
+  xdg.configFile."kitty/palenight.conf" = {
+    text = builtins.readFile ./kitty-config/palenight.conf;
+  };
 }
