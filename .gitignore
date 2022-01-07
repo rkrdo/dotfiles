@@ -6,3 +6,5 @@ vim/dot-vim/swap
 
 tmux/dot-tmux/*
 !tmux/dot-tmux/.gitkeep
+
+Brewfile.lock.json
