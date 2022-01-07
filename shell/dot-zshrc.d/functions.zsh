@@ -11,13 +11,3 @@ function tmuxsession() {
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
-
-use_minikube_docker() {
-  eval $(minikube docker-env)
-  export MINIKUBE_IP=$(minikube ip)
-}
-
-undo_use_minikube_docker() {
-  eval $(minikube docker-env -u)
-  unset MINIKUBE_IP
-}

@@ -11,4 +11,3 @@ alias sourcezsh="source ~/.zshrc"
 
 #git
 alias gdcnp='git --no-pager diff --cached'
-alias gh='git hist'
