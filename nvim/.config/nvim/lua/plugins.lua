@@ -13,16 +13,47 @@ vim.cmd([[
 ]])
 
 return require('packer').startup({function(use)
-  -- require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim' -- Package manager
+  --  lsp
+  use 'neovim/nvim-lspconfig'
+  --  https://github.com/hrsh7th/nvim-cmp#recommended-configuration
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
   use 'tpope/vim-vinegar'
-  use 'tpope/vim-commentary'
+  use 'tpope/vim-endwise'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'tpope/vim-surround'
+
   use 'drewtempelmeyer/palenight.vim'
-  use 'itchyny/lightline.vim'
+  use { 
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
+  use 'numToStr/Comment.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'luochen1990/rainbow'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
+  -- telescope plugins
+  use 'nvim-telescope/telescope.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -33,5 +64,4 @@ config = {
   display = {
     open_fn = require('packer.util').float
   }
-}}
-)
+}})

@@ -38,3 +38,4 @@ opt.updatetime = 300
 opt.timeoutlen = 500
 -- opt.formatoptions:remove { 'c', 'r', 'o' } -- doesn't work
 o.clipboard = 'unnamedplus'
+o.completeopt = 'menuone,noselect'

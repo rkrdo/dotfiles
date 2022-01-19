@@ -1,0 +1,16 @@
+local map = vim.api.nvim_set_keymap
+
+map('', '<leader>ff', '<cmd>Telescope find_files<cr>', {})
+map('', '<leader>fb', '<cmd>Telescope buffers<cr>', {})
+map('', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
+map('', '<leader>rg', '<cmd>Telescope grep_string<cr>', {})
+map('', '<leader>fh', '<cmd>Telescope help_tags<cr>', {})
+
+require('telescope').setup{
+  pickers = {
+    find_files = {
+      -- theme = "dropdown"
+    }
+  }
+}
+-- require('telescope').load_extension('fzf')
