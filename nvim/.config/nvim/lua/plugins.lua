@@ -53,6 +53,7 @@ return require('packer').startup({function(use)
 
   -- telescope plugins
   use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

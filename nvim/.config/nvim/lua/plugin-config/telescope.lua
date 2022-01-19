@@ -5,6 +5,7 @@ map('', '<leader>fb', '<cmd>Telescope buffers<cr>', {})
 map('', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
 map('', '<leader>rg', '<cmd>Telescope grep_string<cr>', {})
 map('', '<leader>fh', '<cmd>Telescope help_tags<cr>', {})
+map('', '<leader>fd', '<cmd>Telescope file_browser<cr>', {})
 
 require('telescope').setup{
   pickers = {
@@ -14,3 +15,4 @@ require('telescope').setup{
   }
 }
 -- require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')
