@@ -9,5 +9,5 @@
 alias zshconfig="vim ~/.zshrc"
 alias sourcezsh="source ~/.zshrc"
 
-#git
-alias gdcnp='git --no-pager diff --cached'
+alias gdcnp='gi --no-pager diff --cached'
+alias vim='nvim'

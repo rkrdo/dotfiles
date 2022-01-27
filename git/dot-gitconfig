@@ -1,5 +1,6 @@
 [core]
-  editor = vim
+  editor = nvim
+  excludesfile = ~/.gitignore
 [alias]
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [color]
