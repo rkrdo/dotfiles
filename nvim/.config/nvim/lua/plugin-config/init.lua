@@ -1,10 +1,19 @@
-require("plugin-config/comment")
-require("plugin-config/gitsigns")
-require("plugin-config/indent-blankline")
-require("plugin-config/lualine")
-require("plugin-config/neogit")
-require("plugin-config/nvim-cmp")
-require("plugin-config/nvim-lspconfig")
-require("plugin-config/palenight")
-require("plugin-config/rainbow")
-require("plugin-config/telescope")
+local plugin_config = {
+  "comment",
+  "gitsigns",
+  "indent-blankline",
+  "lualine",
+  "neogit",
+  "nvim-cmp",
+  "nvim-lspconfig",
+  "palenight",
+  "rainbow",
+  "telescope"
+}
+
+for _, module in ipairs(plugin_config) do
+  local ok, err = pcall(require, 'plugin-config/' .. module)
+  if not ok then
+    error("Error loading " .. module .. err)
+  end
+end
