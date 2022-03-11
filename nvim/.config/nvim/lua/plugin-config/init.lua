@@ -3,6 +3,7 @@ local plugin_config = {
   "gitsigns",
   "indent-blankline",
   "lualine",
+  "luasnip",
   "neogit",
   "nvim-cmp",
   "nvim-lspconfig",
