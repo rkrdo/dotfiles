@@ -39,11 +39,27 @@ end
 -- For python make sure you have python-lsp-server python-lsp-black pyls-flake8 pylsp-mypy pyls-isort installed
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
 -- local servers = { 'pylsp', 'tsserver', 'solargraph' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 150,
---     }
---   }
--- end
+local servers_with_config = {
+  sumneko_lua = {
+    cmd = { 'lua-language-server' },
+    run_in_lspcontainers = true,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' },
+        },
+      },
+    },
+  },
+}
+
+for lsp, lsp_config in pairs(servers_with_config) do
+  nvim_lsp[lsp].setup {
+    cmd = (function() if lsp_config.run_in_lsp_containers then return require'lspcontainers'.command(lsp) else return lsp_config.command end end)(),
+    settings = lsp_config.settings,
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
