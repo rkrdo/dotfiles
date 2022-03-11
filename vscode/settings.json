@@ -1,0 +1,38 @@
+{
+    //vim
+    "vim.leader": ",",
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-u>": true,
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.sneak": true,
+    "vim.surround": true,
+    "workbench.colorTheme": "Starfall",
+    "editor.fontFamily": "SF Mono",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[ruby]": {
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
+    },
+    "ruby.intellisense": "rubyLocate",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "diffEditor.ignoreTrimWhitespace": false
+}
