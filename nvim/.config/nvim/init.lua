@@ -1,4 +1,5 @@
 local config_modules = {
+  'colorscheme',
   'settings',
   'mappings',
   'plugins',

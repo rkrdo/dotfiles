@@ -33,7 +33,8 @@ return require('packer').startup({function(use)
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-surround'
 
-  use 'drewtempelmeyer/palenight.vim'
+  use 'marko-cerovac/material.nvim'
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }

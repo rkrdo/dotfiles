@@ -7,7 +7,6 @@ local plugin_config = {
   "neogit",
   "nvim-cmp",
   "nvim-lspconfig",
-  "palenight",
   "rainbow",
   "telescope"
 }
