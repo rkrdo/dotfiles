@@ -34,36 +34,51 @@ local on_attach = function(client, bufnr)
 
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- For python make sure you have python-lsp-server python-lsp-black pyls-flake8 pylsp-mypy pyls-isort installed
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
--- local servers = { 'pylsp', 'tsserver', 'solargraph' }
-local servers_with_config = {
-  sumneko_lua = {
-    cmd = { 'lua-language-server' },
-    run_in_lspcontainers = true,
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' },
-        },
-      },
-    },
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = require'lspcontainers'.command('sumneko_lua'),
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim', 'util', 'exepath' }
+      }
+    }
   },
-  tsserver = {
-    cmd = { 'typescript-language-server', '--stdio' },
-    settings = {}
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
   }
 }
 
-for lsp, lsp_config in pairs(servers_with_config) do
-  nvim_lsp[lsp].setup {
-    cmd = (function() if lsp_config.run_in_lsp_containers then return require'lspcontainers'.command(lsp) else return lsp_config.command end end)(),
-    settings = lsp_config.settings,
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
+-- https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+  vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+    silent = true,
+  })
 end
+
+nvim_lsp.tsserver.setup({
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({})
+    ts_utils.setup_client(client)
+    buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+    buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+    buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+    on_attach(client, bufnr)
+  end,
+})
+
+
+-- null-ls config
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint, -- eslint or eslint_d
+        null_ls.builtins.code_actions.eslint, -- eslint or eslint_d
+        null_ls.builtins.formatting.prettier -- prettier, eslint, eslint_d, or prettierd
+    },
+    on_attach = on_attach
+})

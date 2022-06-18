@@ -17,6 +17,8 @@ return require('packer').startup({function(use)
   --  lsp
   use 'neovim/nvim-lspconfig'
   use 'lspcontainers/lspcontainers.nvim'
+  use "jose-elias-alvarez/null-ls.nvim"
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
   --  https://github.com/hrsh7th/nvim-cmp#recommended-configuration
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
