@@ -27,7 +27,6 @@ return require('packer').startup({function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
 
-  use 'tpope/vim-vinegar'
   use 'tpope/vim-endwise'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -58,6 +57,16 @@ return require('packer').startup({function(use)
   -- telescope plugins
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+
+  use {
+     "nvim-neo-tree/neo-tree.nvim",
+     branch = "v2.x",
+     requires = {
+       "nvim-lua/plenary.nvim",
+       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+       "MunifTanjim/nui.nvim",
+     }
+   }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

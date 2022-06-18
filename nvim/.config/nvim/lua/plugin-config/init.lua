@@ -4,6 +4,7 @@ local plugin_config = {
   "indent-blankline",
   "lualine",
   "luasnip",
+  "neotree",
   "neogit",
   "nvim-cmp",
   "nvim-lspconfig",
