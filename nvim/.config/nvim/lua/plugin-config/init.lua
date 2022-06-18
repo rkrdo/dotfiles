@@ -8,7 +8,9 @@ local plugin_config = {
   "nvim-cmp",
   "nvim-lspconfig",
   "rainbow",
-  "telescope"
+  "telescope",
+  "treesitter-context",
+  "treesitter"
 }
 
 for _, module in ipairs(plugin_config) do
