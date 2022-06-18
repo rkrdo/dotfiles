@@ -51,6 +51,10 @@ local servers_with_config = {
       },
     },
   },
+  tsserver = {
+    cmd = { 'typescript-language-server', '--stdio' },
+    settings = {}
+  }
 }
 
 for lsp, lsp_config in pairs(servers_with_config) do
