@@ -6,6 +6,7 @@ local plugin_config = {
   "luasnip",
   "neotree",
   "neogit",
+  "nvim-autopairs",
   "nvim-cmp",
   "nvim-lspconfig",
   "rainbow",
