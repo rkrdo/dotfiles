@@ -39,3 +39,5 @@ opt.timeoutlen = 500
 -- opt.formatoptions:remove { 'c', 'r', 'o' } -- doesn't work
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
+-- https://vi.stackexchange.com/a/28837
+opt.jumpoptions:append({ "stack" })

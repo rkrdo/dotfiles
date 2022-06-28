@@ -7,6 +7,7 @@ map('', '<leader>rg', '<cmd>Telescope grep_string<cr>', {})
 map('', '<leader>fh', '<cmd>Telescope help_tags<cr>', {})
 map('', '<leader>fd', '<cmd>Telescope file_browser<cr>', {})
 map('', '<leader>fc', '<cmd>Telescope command_history<cr>', {})
+map('', '<leader>fj', '<cmd>Telescope jumplist<cr>', {})
 
 require('telescope').setup{
   pickers = {
