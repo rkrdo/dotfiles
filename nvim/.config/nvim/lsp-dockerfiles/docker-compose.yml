@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  pylsp:
+    image: lspcontainers/python-lsp-server
+    build:
+      context: .
+      dockerfile: Dockerfile.pylsp
+
+  lua_language_server:
+    image: lspcontainers/lua-language-server
+    build:
+      context: .
+      dockerfile: Dockerfile.lualsp
+
+  tsserver:
+    image: lspcontainers/typescript-language-server
+    build:
+      context: .
+      dockerfile: Dockerfile.tsserver

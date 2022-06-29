@@ -43,12 +43,34 @@ require'lspconfig'.sumneko_lua.setup {
     Lua = {
       diagnostics = {
         globals = { 'vim', 'util', 'exepath' }
+      },
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
       }
     }
   },
   on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
+  flags = lsp_flags,
+}
+
+require 'lspconfig'.pylsp.setup{
+  cmd = require'lspcontainers'.command('pylsp'),
+  on_attach = on_attach,
+  flags = lsp_flags,
+  settings = {
+    pylsp = {
+      plugins = {
+        mccabe = { enabled = false },
+        yapf = { enabled = true },
+        flake8 = { enabled = true },
+        black = { enabled = true },
+        -- pydocstyle = { enabled = true, convention = "google" },
+      }
+    }
   }
 }
 
@@ -60,6 +82,7 @@ local buf_map = function(bufnr, mode, lhs, rhs, _opts)
 end
 
 require'lspconfig'.tsserver.setup({
+  cmd = require'lspcontainers'.command('tsserver'),
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
@@ -71,6 +94,7 @@ require'lspconfig'.tsserver.setup({
     buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
     on_attach(client, bufnr)
   end,
+  flags = lsp_flags,
 })
 
 
