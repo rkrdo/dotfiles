@@ -5,7 +5,6 @@ local plugin_config = {
   "lualine",
   "luasnip",
   "neotree",
-  "neogit",
   "nvim-autopairs",
   "nvim-cmp",
   "nvim-lspconfig",
