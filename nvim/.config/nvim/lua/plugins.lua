@@ -1,8 +1,9 @@
 -- https://github.com/wbthomason/packer.nvim#bootstrapping
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 vim.cmd([[
@@ -12,7 +13,7 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup({function(use)
+return require('packer').startup({ function(use)
   use 'wbthomason/packer.nvim' -- Package manager
   --  lsp
   use 'neovim/nvim-lspconfig'
@@ -60,16 +61,20 @@ return require('packer').startup({function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
 
   use {
-     "nvim-neo-tree/neo-tree.nvim",
-     branch = "v2.x",
-     requires = {
-       "nvim-lua/plenary.nvim",
-       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-       "MunifTanjim/nui.nvim",
-     }
-   }
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  }
 
-   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-autopairs'
+  use {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -77,8 +82,8 @@ return require('packer').startup({function(use)
     require('packer').sync()
   end
 end,
-config = {
-  display = {
-    open_fn = require('packer.util').float
-  }
-}})
+  config = {
+    display = {
+      open_fn = require('packer.util').float
+    }
+  } })

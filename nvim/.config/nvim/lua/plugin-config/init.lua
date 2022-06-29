@@ -9,6 +9,7 @@ local plugin_config = {
   "nvim-cmp",
   "nvim-lspconfig",
   "rainbow",
+  "rest-nvim",
   "telescope",
   "treesitter-context",
   "treesitter"

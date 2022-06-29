@@ -1,9 +1,11 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter#modules
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { 
-    "lua",
+  ensure_installed = {
+    "http",
     "javascript",
+    "json",
+    "lua",
     "python",
     "ruby",
     "typescript"
