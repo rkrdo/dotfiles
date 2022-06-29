@@ -1,8 +1,10 @@
 Usage:
 
 ```
-stow --dotfiles shell
-stow --dotfiles vim
-stow --dotfiles tmux
+stow --dotfiles bat
 stow --dotfiles git
+stow kitty
+stow nvim
+stow --dotfiles shell
+stow --dotfiles tmux
 ```
