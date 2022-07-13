@@ -8,6 +8,7 @@ local plugin_config = {
   "nvim-autopairs",
   "nvim-cmp",
   "nvim-lspconfig",
+  "nvim-surround",
   "rainbow",
   "rest-nvim",
   "telescope",

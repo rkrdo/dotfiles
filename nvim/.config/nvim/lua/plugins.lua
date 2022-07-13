@@ -33,7 +33,7 @@ return require('packer').startup({ function(use)
   use 'tpope/vim-endwise'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
-  use 'tpope/vim-surround'
+  use 'kylechui/nvim-surround'
 
   use 'marko-cerovac/material.nvim'
 
