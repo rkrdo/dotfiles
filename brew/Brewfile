@@ -24,6 +24,7 @@ brew "wget"
 
 # cask "alacritty"
 cask "appcleaner"
+cask "cyberduck"
 cask "qbittorrent"
 cask "docker"
 cask "emacs"
