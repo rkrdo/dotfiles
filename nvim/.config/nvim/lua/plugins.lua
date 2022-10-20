@@ -55,6 +55,7 @@ return require('packer').startup({ function(use)
     run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'RRethy/nvim-treesitter-endwise'
 
   -- telescope plugins
   use 'nvim-telescope/telescope.nvim'
