@@ -5,13 +5,13 @@
         "revision": "cf8a86177665825a7f30780e8fe1af333a0527c6"
       },
       "homebrew/cask": {
-        "revision": "b8c00307221e2e6f66e639c0e540354b95d0e0cf"
+        "revision": "61f934557ccdb51fd2d1eae5afe5f28400dca97e"
       },
       "homebrew/cask-fonts": {
         "revision": "d3f898bd1186c94828296529d125a3cde88d9cca"
       },
       "homebrew/core": {
-        "revision": "923bb7a622b86876a662d1ed4a7ac51ccb2befcf"
+        "revision": "1e7ed8a7c3954a52cb655bdeecbec58fdbed471d"
       },
       "homebrew/services": {
         "revision": "4fe8e3c38c9a38f1d76c9d741f32bdfe8c59e340"
@@ -621,6 +621,12 @@
           "full_name": "appcleaner"
         }
       },
+      "cyberduck": {
+        "version": "8.4.5,38423",
+        "options": {
+          "full_name": "cyberduck"
+        }
+      },
       "qbittorrent": {
         "version": "4.4.5",
         "options": {
@@ -651,6 +657,12 @@
           "full_name": "font-meslo-lg-nerd-font"
         }
       },
+      "obsidian": {
+        "version": "1.0.0",
+        "options": {
+          "full_name": "obsidian"
+        }
+      },
       "pokemon-showdown": {
         "version": "0.11,bf46c879d0",
         "options": {
@@ -661,12 +673,6 @@
         "version": "1.72.2",
         "options": {
           "full_name": "visual-studio-code"
-        }
-      },
-      "cyberduck": {
-        "version": "8.4.5,38423",
-        "options": {
-          "full_name": "cyberduck"
         }
       },
       "wezterm": {
@@ -682,7 +688,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.6.6",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "923bb7a622b86876a662d1ed4a7ac51ccb2befcf",
+        "Homebrew/homebrew-core": "1e7ed8a7c3954a52cb655bdeecbec58fdbed471d",
         "CLT": "14.0.0.0.1.1661618636",
         "Xcode": "14.0.1",
         "macOS": "12.6"
