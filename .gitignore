@@ -8,3 +8,4 @@ tmux/dot-tmux/*
 !tmux/dot-tmux/.gitkeep
 
 nvim/.config/nvim/plugin
+git/.config/lazygit/state.yml
