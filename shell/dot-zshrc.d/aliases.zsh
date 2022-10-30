@@ -11,3 +11,5 @@ alias sourcezsh="source ~/.zshrc"
 
 alias gdcnp='gi --no-pager diff --cached'
 alias vim='nvim'
+alias lzd='lazydocker'
+alias lzg='lazygit'
