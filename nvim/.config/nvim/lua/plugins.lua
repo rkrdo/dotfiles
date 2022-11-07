@@ -51,6 +51,16 @@ return require('packer').startup({ function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'luochen1990/rainbow'
   use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/neotest-python",
+      "olimorris/neotest-rspec",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
