@@ -1,5 +1,6 @@
 local plugin_config = {
   "comment",
+  "dap",
   "gitsigns",
   "indent-blankline",
   "lualine",

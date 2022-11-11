@@ -87,6 +87,13 @@ return require('packer').startup({ function(use)
     requires = { "nvim-lua/plenary.nvim" },
   }
 
+  -- dap plugins
+  use 'mfussenegger/nvim-dap'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'rcarriga/nvim-dap-ui'
+  use 'mfussenegger/nvim-dap-python'
+  -- use "folke/which-key.nvim" -- TODO see if we should use this plugin
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
