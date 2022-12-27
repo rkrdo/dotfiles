@@ -58,7 +58,7 @@ require'lspconfig'.sumneko_lua.setup {
 }
 
 require 'lspconfig'.pylsp.setup{
-  cmd = require'lspcontainers'.command('pylsp'),
+  -- cmd = require'lspcontainers'.command('pylsp'),
   on_attach = on_attach,
   flags = lsp_flags,
   settings = {
@@ -68,6 +68,7 @@ require 'lspconfig'.pylsp.setup{
         yapf = { enabled = true },
         flake8 = { enabled = true },
         black = { enabled = true },
+        pylsp_mypy = { enabled = true },
         -- pydocstyle = { enabled = true, convention = "google" },
       }
     }
