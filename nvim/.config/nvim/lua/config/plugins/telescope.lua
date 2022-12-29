@@ -9,12 +9,10 @@ map('', '<leader>fd', '<cmd>Telescope file_browser<cr>', {})
 map('', '<leader>fc', '<cmd>Telescope command_history<cr>', {})
 map('', '<leader>fj', '<cmd>Telescope jumplist<cr>', {})
 
-require('telescope').setup{
-  pickers = {
-    find_files = {
-      -- theme = "dropdown"
-    }
+return {
+  "nvim-telescope/telescope.nvim",
+  cmd = { "Telescope" },
+  keys = {
+    { "<leader>ff", "<cmd>Telescope find_files<cr>" }
   }
 }
--- require('telescope').load_extension('fzf')
-require('telescope').load_extension('file_browser')

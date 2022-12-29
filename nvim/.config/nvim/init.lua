@@ -1,14 +1,6 @@
-local config_modules = {
-  'colorscheme',
-  'settings',
-  'mappings',
-  'plugins',
-  'plugin-config'
-}
+-- leader needs to be set before loading lazy.nvim
+vim.g.mapleader = ","
 
-for _, module in ipairs(config_modules) do
-  local ok, err = pcall(require, module)
-  if not ok then
-    error("Error loading " .. module .. err)
-  end
-end
+require("config.lazy")
+require("config.settings")
+require("config.mappings")

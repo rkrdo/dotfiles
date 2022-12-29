@@ -4,7 +4,6 @@ local o = vim.o
 local wo = vim.wo
 local opt = vim.opt
 
-g.mapleader = ','
 g.netrw_dirhistmax = 0
 cmd('let &showbreak = ">>> "')
 

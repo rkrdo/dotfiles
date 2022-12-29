@@ -1,19 +1,24 @@
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+local map = vim.api.nvim_set_keymap
+
+vim.g.neo_tree_remove_legacy_commands = 1
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
+
+map("n", "\\", "<cmd>Neotree reveal toggle<cr>", {})
+map("n", "-", "<cmd>Neotree reveal current<cr>", {})
 
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#find-with-telescope
 local function get_telescope_opts(state, path)
   return {
     cwd = path,
     search_dirs = { path },
-    attach_mappings = function (prompt_bufnr, map)
+    attach_mappings = function(prompt_bufnr, _)
       local actions = require "telescope.actions"
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
@@ -31,14 +36,26 @@ local function get_telescope_opts(state, path)
   }
 end
 
-require("neo-tree").setup({
-  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-  popup_border_style = "rounded",
-  enable_git_status = true,
-  enable_diagnostics = true,
-  sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil , -- use a custom function for sorting files and directories in the tree
-  -- sort_function = function (a,b)
+return {
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v2.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+  },
+  cmd = { "Neotree" },
+  keys = {
+    { "\\", "<cmd> Neotree toggle<cr>", desc = "Neotree" }
+  },
+  config = {
+    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    popup_border_style = "rounded",
+    enable_git_status = true,
+    enable_diagnostics = true,
+    sort_case_insensitive = false, -- used when sorting files and directories in the tree
+    sort_function = nil, -- use a custom function for sorting files and directories in the tree
+    -- sort_function = function (a,b)
     --       if a.type == b.type then
     --           return a.path > b.path
     --       else
@@ -86,8 +103,8 @@ require("neo-tree").setup({
           -- Change type
           added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
           modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "✖",-- this can only be used in the git_status source
-          renamed   = "",-- this can only be used in the git_status source
+          deleted   = "✖", -- this can only be used in the git_status source
+          renamed   = "", -- this can only be used in the git_status source
           -- Status type
           untracked = "",
           ignored   = "",
@@ -133,31 +150,31 @@ require("neo-tree").setup({
         ["p"] = "paste_from_clipboard",
         ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
         -- ["c"] = {
-          --  "copy",
-          --  config = {
-            --    show_path = "none" -- "none", "relative", "absolute"
-            --  }
-            --}
-            ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-            ["q"] = "close_window",
-            ["R"] = "refresh",
-            ["?"] = "show_help",
-          }
+        --  "copy",
+        --  config = {
+        --    show_path = "none" -- "none", "relative", "absolute"
+        --  }
+        --}
+        ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+        ["q"] = "close_window",
+        ["R"] = "refresh",
+        ["?"] = "show_help",
+      }
+    },
+    nesting_rules = {},
+    filesystem = {
+      filtered_items = {
+        -- https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/353#discussioncomment-2717085
+        visible = false, -- when true, they will just be displayed differently than normal items
+        hide_dotfiles = false,
+        hide_gitignored = true,
+        hide_by_name = {
+          --"node_modules"
         },
-        nesting_rules = {},
-        filesystem = {
-          filtered_items = {
-            -- https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/353#discussioncomment-2717085
-            visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = false,
-            hide_gitignored = true,
-            hide_by_name = {
-              --"node_modules"
-            },
-            hide_by_pattern = { -- uses glob style patterns
-            --"*.meta"
-          },
-          never_show = { -- remains hidden even if visible is toggled to true
+        hide_by_pattern = { -- uses glob style patterns
+          --"*.meta"
+        },
+        never_show = { -- remains hidden even if visible is toggled to true
           --".DS_Store",
           --"thumbs.db"
         },
@@ -226,7 +243,5 @@ require("neo-tree").setup({
         }
       }
     }
-  })
-
-  vim.cmd([[nnoremap \ :Neotree reveal toggle<cr>]])
-  vim.cmd([[nnoremap - :Neotree reveal current<cr>]])
+  }
+}
