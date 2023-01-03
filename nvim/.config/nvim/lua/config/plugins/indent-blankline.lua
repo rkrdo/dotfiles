@@ -1,7 +1,8 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
-  config = function()
-   -- -- https://github.com/Yggdroot/indentLine#customization
+  event = "BufReadPre",
+  init = function()
+    -- -- https://github.com/Yggdroot/indentLine#customization
     -- vim.g.indentLine_leadingSpaceChar = '.'
     -- vim.g.indentLine_leadingSpaceEnabled = 1
 
@@ -12,8 +13,8 @@ return {
 
     vim.opt.list = true
     vim.opt.listchars:append("eol:↴")
-    require("indent_blankline").setup {
-      show_end_of_line = true,
-    }
-  end
+  end,
+  config = {
+    show_end_of_line = true
+  }
 }

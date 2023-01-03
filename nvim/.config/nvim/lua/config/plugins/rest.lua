@@ -1,11 +1,12 @@
 return {
   "NTBBloodbath/rest.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
+  init = function()
     vim.api.nvim_set_keymap('n', '<leader>rr', '<Plug>RestNvim<cr>', {})
     vim.api.nvim_set_keymap('n', '<leader>rp', '<Plug>RestNvimPreview<cr>', {})
     vim.api.nvim_set_keymap('n', '<leader>rl', '<Plug>RestNvimLast<cr>', {})
-
+  end,
+  config = function()
     require("rest-nvim").setup({
       -- Open request results in a horizontal split
       result_split_horizontal = false,

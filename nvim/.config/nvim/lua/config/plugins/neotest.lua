@@ -7,9 +7,15 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim"
   },
-  config = function()
+  init = function()
     local map = vim.api.nvim_set_keymap
-
+    -- :h neotest.run
+    map('', '<leader>T', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', {})
+    map('', '<leader>t', ':lua require("neotest").run.run()<cr>', {})
+    map('', '<leader>ts', ':lua require("neotest").summary.toggle()<cr>', {})
+    map('', '<leader>to', ':lua require("neotest").output.open({ enter = true })<cr>', {})
+  end,
+  config = function()
     require 'neotest'.setup({
       adapters = {
         require('neotest-python')({
@@ -18,11 +24,5 @@ return {
         require("neotest-rspec"),
       }
     })
-
-    -- :h neotest.run
-    map('', '<leader>T', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', {})
-    map('', '<leader>t', ':lua require("neotest").run.run()<cr>', {})
-    map('', '<leader>ts', ':lua require("neotest").summary.toggle()<cr>', {})
-    map('', '<leader>to', ':lua require("neotest").output.open({ enter = true })<cr>', {})
   end
 }
