@@ -1,5 +1,6 @@
 local M = {
   'neovim/nvim-lspconfig',
+  event = 'BufRead',
   dependencies = {
     { 'lspcontainers/lspcontainers.nvim' },
     { "jose-elias-alvarez/null-ls.nvim" },

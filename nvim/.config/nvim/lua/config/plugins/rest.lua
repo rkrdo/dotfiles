@@ -1,6 +1,7 @@
 return {
-  "NTBBloodbath/rest.nvim",
+  "rest-nvim/rest.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
+  ft = { "http" },
   init = function()
     vim.api.nvim_set_keymap('n', '<leader>rr', '<Plug>RestNvim<cr>', {})
     vim.api.nvim_set_keymap('n', '<leader>rp', '<Plug>RestNvimPreview<cr>', {})

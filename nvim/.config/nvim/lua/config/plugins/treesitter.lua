@@ -1,7 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = "BufReadPost",
+  event = "BufRead",
   config = {
     -- https://github.com/nvim-treesitter/nvim-treesitter#modules
     -- A list of parser names, or "all"
@@ -42,19 +42,9 @@ return {
     endwise = {
       enable = true,
     },
-    -- https://github.com/p00f/nvim-ts-rainbow#installation-and-setup
-    rainbow = {
-      enable = true,
-      -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-      extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-      max_file_lines = nil, -- Do not enable for files with more than n lines, int
-      -- colors = {}, -- table of hex strings
-      -- termcolors = {} -- table of colour name strings
-    }
   },
   dependencies = {
     { 'nvim-treesitter/nvim-treesitter-context', config = true, event = "BufReadPre" },
     { 'RRethy/nvim-treesitter-endwise' },
-    { 'p00f/nvim-ts-rainbow' },
   }
 }

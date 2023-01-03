@@ -2,6 +2,7 @@ local map = vim.api.nvim_set_keymap
 
 local M = {
   'mfussenegger/nvim-dap',
+  event = "BufRead",
   dependencies = {
     {
       'rcarriga/nvim-dap-ui',

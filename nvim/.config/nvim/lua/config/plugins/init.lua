@@ -1,23 +1,32 @@
 return {
   {
     "numToStr/Comment.nvim",
+    event = "BufRead",
     config = true
   },
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+  {
+    "tpope/vim-rhubarb",
+    dependencies = {
+      "tpope/vim-fugitive",
+      cmd = { "Git" }
+    },
+    cmd = { "GBrowse" }
+  },
   {
     "kylechui/nvim-surround",
+    event = "BufRead",
     config = true
   },
-
   {
-    "luochen1990/rainbow",
-    config = function()
-      -- https://github.com/luochen1990/rainbow#install
-      vim.g.rainbow_active = 1
-    end
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true
   },
   {
-    "windwp/nvim-autopairs", config = true
+    'luochen1990/rainbow',
+    event = "BufRead",
+    init = function()
+      vim.g.rainbow_active = 1
+    end
   }
 }
