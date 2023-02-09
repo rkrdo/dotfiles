@@ -17,7 +17,7 @@ local M = {
       'mfussenegger/nvim-dap-python',
       init = function()
         map('', '<leader>dn', ':lua require("dap-python").test_method()<CR>', {})
-        map('', 'leader>df', ':lua require("dap-python").test_class()<CR>', {})
+        map('', '<leader>df', ':lua require("dap-python").test_class()<CR>', {})
         map('v', '<leader>ds', '<ESC>:lua require("dap-python").debug_selection()<CR>', {})
       end,
       config = function()
