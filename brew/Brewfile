@@ -24,6 +24,7 @@ brew "wget"
 # brew "postgresql@12"
 
 cask "appcleaner"
+cask "calibre"
 cask "cyberduck"
 cask "qbittorrent"
 cask "docker"
