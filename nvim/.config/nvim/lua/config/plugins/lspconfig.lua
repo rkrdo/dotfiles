@@ -69,7 +69,7 @@ M.config = function()
   }
 
   require 'lspconfig'.pylsp.setup {
-    -- cmd = require'lspcontainers'.command('pylsp'),
+    cmd = require'lspcontainers'.command('pylsp'),
     on_attach = on_attach,
     flags = lsp_flags,
     settings = {
