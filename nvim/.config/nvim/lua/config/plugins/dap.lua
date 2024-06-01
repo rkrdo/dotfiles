@@ -30,6 +30,7 @@ local M = {
     {
       'theHamsta/nvim-dap-virtual-text', config = true
     },
+    { "nvim-neotest/nvim-nio" }
   }
 }
 

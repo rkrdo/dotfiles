@@ -1,5 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
+  main = "ibl",
   event = "BufReadPre",
   init = function()
     -- -- https://github.com/Yggdroot/indentLine#customization
@@ -14,7 +15,4 @@ return {
     vim.opt.list = true
     vim.opt.listchars:append("eol:↴")
   end,
-  config = {
-    show_end_of_line = true
-  }
 }
