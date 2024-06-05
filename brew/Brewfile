@@ -1,3 +1,4 @@
+# vi set ft=ruby
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
